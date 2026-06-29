@@ -1,0 +1,12 @@
+C:\Code\RayGame\RayEngine\bin\Debug\net10.0\RayEngine.deps.json
+C:\Code\RayGame\RayEngine\bin\Debug\net10.0\RayEngine.dll
+C:\Code\RayGame\RayEngine\bin\Debug\net10.0\RayEngine.pdb
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.csproj.AssemblyReference.cache
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.AssemblyInfoInputs.cache
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.AssemblyInfo.cs
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.csproj.CoreCompileInputs.cache
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.dll
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\refint\RayEngine.dll
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\RayEngine.pdb
+C:\Code\RayGame\RayEngine\obj\Debug\net10.0\ref\RayEngine.dll
