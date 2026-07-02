@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Text.Json.Serialization;
 using RayEngine;
 using RayEngine.Graphics;
 using Raylib_cs;
@@ -26,11 +27,12 @@ public class Game() : App(800, 600, "Hello Window", false)
         _player.Scale = 4.0f;
         
         base.LoadContent();
+        
+        
     }
 
     public override void Update()
     {
-        _playerPos += new Vector2(1, 1) * Raylib.GetFrameTime() * 100;
         base.Update();
     }
 
