@@ -8,7 +8,10 @@ namespace RayGame;
 public class Game() : App(800, 600, "Hello Window", false)
 {
 
-    private TextureRegion _player;
+    private Sprite _player;
+    private Vector2 _playerPos = new Vector2(100, 100);
+    
+    
     public override void InitializeApp()
     {
         base.InitializeApp();
@@ -17,15 +20,17 @@ public class Game() : App(800, 600, "Hello Window", false)
     public override void LoadContent()
     {
         Texture2D atlasTexture = Raylib.LoadTexture(Path.Combine(ResourcePath, "Textures", "player.png"));
-        TextureAtlas atlas = new TextureAtlas(atlasTexture);
-        atlas.AddRegion("player",0, 0, 16, 16);
-        _player = atlas.GetRegion("player");
+        TextureAtlas atlas = TextureAtlas.FromFile("player.xml");
+
+        _player = atlas.CreateSprite("player");
+        _player.Scale = 4.0f;
         
         base.LoadContent();
     }
 
     public override void Update()
     {
+        _playerPos += new Vector2(1, 1) * Raylib.GetFrameTime() * 100;
         base.Update();
     }
 
@@ -33,7 +38,7 @@ public class Game() : App(800, 600, "Hello Window", false)
     {
         Raylib.ClearBackground(Color.Black);
         
-        _player.Draw(new Vector2(100, 100));
+        _player.Draw(_playerPos);
         
         base.Draw();
     }

@@ -89,7 +89,7 @@ public class TextureAtlas
                 XDocument doc = XDocument.Load(reader);
                 XElement root = doc.Root;
 
-                string texturePath = root.Element("Texture").Value;
+                string texturePath = Path.Combine(App.ResourcePath, root.Element("Texture").Value) ;
                 atlas.Texture = Raylib.LoadTexture(texturePath);
                 
                 var regions = root.Element("Regions")?.Elements("Region");
@@ -113,5 +113,11 @@ public class TextureAtlas
             }
             return atlas;
         }
+    }
+
+    public Sprite CreateSprite(string name)
+    {
+        TextureRegion region = GetRegion(name);
+        return new Sprite(region);
     }
 }

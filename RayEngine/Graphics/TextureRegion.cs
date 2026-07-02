@@ -53,7 +53,7 @@ public class TextureRegion
     /// <param name="position">The position to draw this texture region on screen.</param>
     public void Draw(Vector2 position)
     {
-        Draw(position, 0.0f, 1.0f, Color.White);
+        Draw(position, 0.0f, new Vector2(0,0), 1.0f, Color.White);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class TextureRegion
     /// <param name="tint">The tint color to be used when drawing this texture region.</param>
     public void Draw(Vector2 position, Color tint)
     {
-        Draw(position,0.0f, 0.0f ,tint);
+        Draw(position,0.0f, new Vector2(0,0), 0.0f ,tint);
     }
     
     /// <summary>
@@ -73,9 +73,10 @@ public class TextureRegion
     /// <param name="rotation">The rotation of the texture region as a float.</param>
     /// <param name="scale">The scale of the texture region scaled both x and y using the float.</param>
     /// <param name="tint">The tint color to be used when drawing this texture region.</param>
-    public void Draw(Vector2 position, float rotation, float scale, Color tint)
+    public void Draw(Vector2 position, float rotation, Vector2 origin, float scale, Color tint)
     {
-        Raylib.DrawTextureEx(Texture, position, rotation, scale, tint);
+        Rectangle dst = new Rectangle(position, new Vector2(SrcRectangle.Width * scale, SrcRectangle.Height * scale));
+        Raylib.DrawTexturePro(Texture, SrcRectangle, dst, origin, rotation, tint);
     }
     
 }
