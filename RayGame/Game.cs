@@ -15,7 +15,6 @@ public class Game() : App(800, 600, "Hello Window", false)
 
     public override void InitializeApp()
     {
-        
         base.InitializeApp();
     }
 
@@ -33,6 +32,28 @@ public class Game() : App(800, 600, "Hello Window", false)
         _player.Update(dt);
         
         CheckInput();
+        
+        Rectangle screenBounds = new Rectangle(0, 0, Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+
+        if (_playerPos.X <= screenBounds.X)
+        {
+            _playerPos.X = 0;
+        }
+
+        if (_playerPos.X + _player.TextureRegion.Width * _player.Scale  >= screenBounds.Width)
+        {
+            _playerPos.X = screenBounds.Width - _player.TextureRegion.Width * _player.Scale;
+        }
+
+        if (_playerPos.Y <= screenBounds.Y)
+        {
+            _playerPos.Y = 0;
+        }
+
+        if (_playerPos.Y + _player.TextureRegion.Height * _player.Scale >= screenBounds.Height)
+        {
+            _playerPos.Y = screenBounds.Height - _player.TextureRegion.Height * _player.Scale;
+        }
         
         base.Update(dt);
     }
