@@ -6,7 +6,7 @@ namespace RayEngine.Graphics;
 public class AnimatedSprite : Sprite
 {
     private int _currentFrame;
-    private TimeSpan _elapsed;
+    private float _elapsed;
     private Animation _animation;
 
     /// <summary>
@@ -39,7 +39,7 @@ public class AnimatedSprite : Sprite
     /// <summary>
     /// Updates this animated sprite.
     /// </summary>
-    public void Update(TimeSpan deltaTime)
+    public void Update(float deltaTime)
     {
         _elapsed += deltaTime;
         

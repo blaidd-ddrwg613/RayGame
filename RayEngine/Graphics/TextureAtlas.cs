@@ -145,7 +145,7 @@ public class TextureAtlas
             var animValues = animationData.Value;
 
             string name = animationData.Key;
-            TimeSpan delay = TimeSpan.FromMilliseconds(animValues.Delay);
+            float delay = animValues.Delay;
 
             List<TextureRegion> frames = new List<TextureRegion>();
 

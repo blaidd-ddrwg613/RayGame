@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
 using RayEngine;
 using RayEngine.Graphics;
-using RayEngine.Utils;
 using Raylib_cs;
 
 namespace RayGame;
@@ -11,10 +10,12 @@ public class Game() : App(800, 600, "Hello Window", false)
 
     private AnimatedSprite _player;
     private Vector2 _playerPos = new Vector2(100, 100);
+    private float _speed = 0.3f;
 
 
     public override void InitializeApp()
     {
+        
         base.InitializeApp();
     }
 
@@ -27,12 +28,16 @@ public class Game() : App(800, 600, "Hello Window", false)
         base.LoadContent();
     }
 
-    public override void Update(TimeSpan dt)
+    public override void Update(float dt)
     {
         _player.Update(dt);
+        
+        CheckInput();
+        
+        base.Update(dt);
     }
 
-    public override void Draw(TimeSpan dt)
+    public override void Draw(float dt)
     {
         Raylib.ClearBackground(Color.Black);
         
@@ -44,5 +49,28 @@ public class Game() : App(800, 600, "Hello Window", false)
     public override void CloseApp()
     {
         base.CloseApp();
+    }
+
+    private void CheckInput()
+    {
+        if (Raylib.IsKeyDown(KeyboardKey.W))
+        {
+            _playerPos.Y -= _speed * DeltaTime;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.A))
+        {
+            _playerPos.X -= _speed * DeltaTime;
+        }
+        
+        if (Raylib.IsKeyDown(KeyboardKey.S))
+        {
+            _playerPos.Y += _speed * DeltaTime;
+        }
+        
+        if (Raylib.IsKeyDown(KeyboardKey.D))
+        {
+            _playerPos.X += _speed * DeltaTime;
+        }
     }
 }

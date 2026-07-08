@@ -22,7 +22,7 @@ public class App :IDisposable
     /// </summary>
     public static string WindowTitle { get; set; }
 
-    public static TimeSpan DeltaTime { get; set; }
+    public static float DeltaTime { get; set; }
     
     /// <summary>
     /// If the window is in fullscreen
@@ -42,8 +42,7 @@ public class App :IDisposable
         s_instance = this;
         IsFullscreen = fullscreen;
 
-        DeltaTime = TimeSpan.Zero;
-        
+        DeltaTime = 0.0f;
         // Set the window Parameters
         if (IsFullscreen)
         {
@@ -66,6 +65,8 @@ public class App :IDisposable
         
         while (!Raylib.WindowShouldClose())
         {
+            DeltaTime = Raylib.GetFrameTime() * 1000.0f;
+            
             Update(DeltaTime);
             
             Raylib.BeginDrawing();
@@ -86,14 +87,14 @@ public class App :IDisposable
         
     }
 
-    public virtual void Update(TimeSpan dt)
+    public virtual void Update(float dt)
     {
         
     }
 
-    public virtual void Draw(TimeSpan dt)
+    public virtual void Draw(float dt)
     {
-        DeltaTime = TimeSpan.FromSeconds(Raylib.GetFrameTime());
+        
     }
 
     public virtual void CloseApp()
