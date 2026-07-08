@@ -1,5 +1,7 @@
-﻿using System.Xml;
+﻿using System.Text.Json;
+using System.Xml;
 using System.Xml.Linq;
+using RayEngine.Serializers;
 
 namespace RayEngine.Graphics;
 
@@ -74,45 +76,36 @@ public class TextureAtlas
     /// Creates a new texture atlas based on a texture atlas XML configuration file.
     /// </summary>
     /// <param name="content">The content manager used to load the texture for the atlas.</param>
-    /// <param name="fileName">The path to the XML file, relative to the content root directory.</param>
+    /// <param name="fileName">The path to the Aseprite JSON file, relative to the content root directory.</param>
     /// <returns>The texture atlas created by this method.</returns>
     public static TextureAtlas FromFile(string fileName)
     {
         TextureAtlas atlas = new TextureAtlas();
-        
-        var xmlPath = Path.Combine(App.ResourcePath, "Textures", fileName);
 
-        using (Stream stream = new FileStream(xmlPath, FileMode.Open) )
+        AsepriteData data = AsepriteJsonReader.ParseJson(fileName);
+
+        var texturePath = Path.Combine(App.ResourcePath, "Textures", data.Meta.Image);
+        atlas.Texture = Raylib.LoadTexture(texturePath);
+
+        foreach (var frame in data.Frames)
         {
-            using (XmlReader reader = new XmlTextReader(stream))
+            var frameData = frame.Value;
+            string? name = frame.Key;
+            int x = frameData.Frame.X;
+            int y = frameData.Frame.Y;
+            int width = frameData.Frame.W;
+            int height = frameData.Frame.H;
+            
+            if (!string.IsNullOrEmpty(name))
             {
-                XDocument doc = XDocument.Load(reader);
-                XElement root = doc.Root;
-
-                string texturePath = Path.Combine(App.ResourcePath, root.Element("Texture").Value) ;
-                atlas.Texture = Raylib.LoadTexture(texturePath);
-                
-                var regions = root.Element("Regions")?.Elements("Region");
-
-                if (regions != null)
-                {
-                    foreach (var region in regions)
-                    {
-                        string name = region.Attribute("name")?.Value;
-                        int x = int.Parse(region.Attribute("x")?.Value ?? "0");
-                        int y = int.Parse(region.Attribute("y")?.Value ?? "0");
-                        int width = int.Parse(region.Attribute("width")?.Value ?? "0");
-                        int height = int.Parse(region.Attribute("height")?.Value ?? "0");
-
-                        if (!string.IsNullOrEmpty(name))
-                        {
-                            atlas.AddRegion(name, x, y, width, height);
-                        }
-                    }
-                }
+                atlas.AddRegion(name, x, y, width, height);
             }
-            return atlas;
+            else
+            {
+                Raylib.TraceLog(TraceLogLevel.Error, "Frame name is Null or Empty");
+            }
         }
+        return atlas;
     }
 
     public Sprite CreateSprite(string name)
