@@ -9,7 +9,7 @@ namespace RayGame;
 public class Game() : App(800, 600, "Hello Window", false)
 {
 
-    private Sprite _player;
+    private AnimatedSprite _player;
     private Vector2 _playerPos = new Vector2(100, 100);
 
 
@@ -20,25 +20,25 @@ public class Game() : App(800, 600, "Hello Window", false)
 
     public override void LoadContent()
     {
-        TextureAtlas atlas = TextureAtlas.FromFile("player");
-        _player = atlas.CreateSprite("player_0");
+        TextureAtlas atlas = TextureAtlas.FromFile("spritesheet");
+        _player = atlas.CreateAnimatedSprite("player_animation");
         _player.Scale = 4.0f;
         
         base.LoadContent();
     }
 
-    public override void Update()
+    public override void Update(TimeSpan dt)
     {
-        base.Update();
+        _player.Update(dt);
     }
 
-    public override void Draw()
+    public override void Draw(TimeSpan dt)
     {
         Raylib.ClearBackground(Color.Black);
         
         _player.Draw(_playerPos);
         
-        base.Draw();
+        base.Draw(dt);
     }
 
     public override void CloseApp()

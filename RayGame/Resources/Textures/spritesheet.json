@@ -1,0 +1,46 @@
+﻿{
+  "Image_Data":
+  {
+    "texture": "spritesheet.png"
+  },
+  
+  "Regions":
+  {
+    "player_0" :
+    {
+      "x": 0,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    "player_1":
+    {
+      "x": 16,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    "player_2":
+    {
+      "x": 32,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    "potion":
+    {
+      "x": 46,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    }
+  },
+  "Animations":
+  {
+    "player_animation":
+    {
+      "delay" : 200,
+      "frames":["player_0", "player_1", "player_2", "player_1"]
+    }
+  }
+}

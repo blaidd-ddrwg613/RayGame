@@ -2,9 +2,9 @@
 
 namespace RayEngine.Serializers;
 
-public class AsepriteJsonReader
+public class ImageJsonReader
 {
-    public static AsepriteData ParseJson(string filePath)
+    public static JsonImageData ParseJson(string filePath)
     {
         var jsonPath = Path.Combine(App.ResourcePath, "Textures", filePath + ".json");
         string jsonString = File.ReadAllText(jsonPath);
@@ -14,6 +14,6 @@ public class AsepriteJsonReader
             PropertyNameCaseInsensitive = true
         };
 
-        return JsonSerializer.Deserialize<AsepriteData>(jsonString, options)!;
+        return JsonSerializer.Deserialize<JsonImageData>(jsonString, options)!;
     }
 }

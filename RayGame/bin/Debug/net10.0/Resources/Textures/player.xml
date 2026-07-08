@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<TextureAtlas>
-    <Texture>Textures/player.png</Texture>
-    <Regions>
-        <Region name="player" x="0" y="0" width="16" height="16" />
-    </Regions>
-</TextureAtlas>
