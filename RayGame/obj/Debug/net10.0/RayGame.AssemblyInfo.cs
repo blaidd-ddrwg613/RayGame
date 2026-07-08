@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RayGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5390ecb3191e27cd5011cd50d4dfb3ced586b27")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8587bd8ef4313d35d7087c87ec5cb7b4bd47c125")]
 [assembly: System.Reflection.AssemblyProductAttribute("RayGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RayGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
