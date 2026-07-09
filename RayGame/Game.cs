@@ -12,6 +12,7 @@ public class Game() : App(800, 600, "Hello Window", false)
     private Vector2 _playerPos = new Vector2(100, 100);
     private float _speed = 0.3f;
 
+    private Sprite _dirt;
 
     public override void InitializeApp()
     {
@@ -23,7 +24,11 @@ public class Game() : App(800, 600, "Hello Window", false)
         TextureAtlas atlas = TextureAtlas.FromFile("spritesheet");
         _player = atlas.CreateAnimatedSprite("player_animation");
         _player.Scale = 4.0f;
-        
+
+        // Load ldtk file and store data
+        var worldPath = Path.Combine(ResourcePath, "Textures", "world.ldtk");
+        var json = File.ReadAllText(worldPath);
+
         base.LoadContent();
     }
 

@@ -25,3 +25,5 @@ C:\Code\RayGame\RayGame\bin\Debug\net10.0\RayEngine.pdb
 C:\Code\RayGame\RayGame\obj\Debug\net10.0\RayGame.sourcelink.json
 C:\Code\RayGame\RayGame\bin\Debug\net10.0\Resources\Textures\spritesheet.json
 C:\Code\RayGame\RayGame\bin\Debug\net10.0\Resources\Textures\spritesheet.png
+C:\Code\RayGame\RayGame\bin\Debug\net10.0\Resources\Textures\world.ldtk
+C:\Code\RayGame\RayGame\bin\Debug\net10.0\Newtonsoft.Json.dll
