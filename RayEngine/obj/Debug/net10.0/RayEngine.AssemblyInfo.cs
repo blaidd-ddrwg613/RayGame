@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RayEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1dbb70362cb1d94ae2a9bd929e66c8a1f17b162")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57ed522c78aabb9b21b96d5223addd320e16ccc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("RayEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RayEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
